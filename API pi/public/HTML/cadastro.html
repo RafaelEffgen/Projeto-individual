@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Rainbow Six Siege</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="tela.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="signup">
+        <div class="card">
+            <div class="card-cad">
+        <h2>Cadastro</h2>
+        <form class="form">
+            <select id="patente" required>
+                <option value="">Selecione uma patente</option>
+                <option value="cobre">Cobre</option>
+                <option value="bronze">Bronze</option>
+                <option value="prata">Prata</option>
+                <option value="ouro">Ouro</option>
+                <option value="platina">Platina</option>
+                <option value="esmeralda">Esmeralda</option>
+                <option value="diamante">Diamante</option>
+                <option value="champions">Champions</option>
+            </select>
+            <input type="email" id="emailCadastro" placeholder="Email" required>
+            <input type="text" id="cpf" placeholder="CPF (11 caracteres)" pattern="\d{11}" required>
+            <input type="password" id="senhaCadastro" placeholder="Senha" pattern="^(?=.*[A-Z])(?=.*\d).{8,}$" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+        </div>
+    </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Rainbow Six Siege</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,188 @@
+body {
+    font-family: 'Bebas Neue', Arial, sans-serif; /* Definindo a fonte para Bebas Neue */
+    margin: 0;
+    padding: 0;
+    background-color: black; /* Adiciona a imagem de fundo */
+    background-size: cover; /* Ajusta o tamanho da imagem de fundo */
+    background-attachment: fixed; /* Mantém a imagem de fundo fixa durante o scroll */
+    color: #fff;
+}
+
+header {
+    background-color: #072a50;
+    padding: 20px 0;
+    font-size: 25px;
+    font-display: flex;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+    height: 100vh;
+}
+
+.card {
+    display: flex;
+    justify-content: space-around; /* Alinha os cards igualmente horizontalmente */
+    align-items: center; /* Faz com que os cards preencham verticalmente */
+    font-size: 25px;
+    font-display: flex;
+    text-align: center;
+}
+
+.card-item {
+    width: 300px; /* Define a largura dos cards */
+    background-color: #072a50; /* Cor de fundo azul */
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s; /* Adiciona uma transição suave no hover */
+}
+
+.card-cad {
+    width: 300px; /* Define a largura dos cards */
+    background-color: #072a50; /* Cor de fundo azul */
+    margin: 60px;
+    padding: 100px;
+    border-radius: 80px;
+    transition: transform 0.3s; /* Adiciona uma transição suave no hover */
+    font-size: 40px;
+}
+
+.card-news {
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Define a largura dos cards */
+    height: 120px;
+    background-color: #072a50; /* Cor de fundo azul */
+    margin: 0px;
+}
+
+.card-text{
+    justify-content: center;
+    align-items: center;
+    width: 1400px; /* Define a largura dos cards */
+    height: auto;
+    border-radius: 80px;
+    background-color: #072a50; /* Cor de fundo azul */
+    margin: 60px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.card-item:hover {
+    transform: translateY(-5px); /* Efeito de levantar os cards ao passar o mouse */
+}
+
+.map-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.map-grid img {
+    width: 100%;
+    height: auto;
+    transition: transform 1s;
+}
+
+.map-grid img:hover {
+    transform: scale(1.1);
+}
+
+footer {
+    background-color: #072a50;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Estilo para o card em destaque */
+.card-item.featured {
+    width: 100%; /* Ocupa toda a largura da seção */
+}
+
+.history {
+    margin-top: 175px;
+    text-align: center;
+    width: 195vh; /* Define a largura dos cards */
+    background-color: #072a50; /* Cor de fundo azul */
+    font-size: 25px;
+}
+
+.noticia{
+    max-width: 300px; /* Defina a largura máxima desejada */
+    height: auto; /* Mantém a proporção da altura automaticamente */
+}
+
+.noticiaDestaque{
+    max-width: 500px; /* Defina a largura máxima desejada */
+    height: auto; /* Mantém a proporção da altura automaticamente */
+}
+
+button[type="submit"]:hover {
+    background-color: #063961;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+a {
+    color: #072a50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* cadastro.css */
+input[type="email"],
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #072a50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #063961;
+}
+
+option[value=""] {
+    color: #ccc;
+}
