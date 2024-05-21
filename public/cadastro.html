@@ -54,7 +54,6 @@
 </html>
 <script>
     function cadastrar() {
-      console.log('foi')
       aguardar();
   
       //Recupere o valor da nova input pelo nome do id
@@ -108,7 +107,9 @@
             setTimeout(() => {
               window.location = "login.html";
             }, "2000");
-  
+
+            limpaFormulario();
+            finalizarAguardar();
           } else {
             throw "Houve um erro ao tentar realizar o cadastro!";
           }
