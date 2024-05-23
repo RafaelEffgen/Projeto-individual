@@ -1,0 +1,67 @@
+body {
+    background-color: black;
+    position: relative;
+}
+
+#mensagem {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+#menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none;
+}
+
+#menu button {
+    margin: 10px;
+}
+
+#tempoInicial {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 20px;
+    display: none;
+}
+
+#contador {
+    position: absolute;
+    top: 40px; /* Posição ao lado do contador de tempo */
+    right: 10px; /* Alinhado com o contador de tempo */
+    color: white;
+    font-size: 20px;
+    display: none;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+div#mensagem {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    font-weight: 600;
+    color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-color: red;
+}
+
+p {
+    margin: 0;
+}

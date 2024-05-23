@@ -74,21 +74,21 @@ function entrar() {
                     window.location = "../index.html";
                 }, 1000); // apenas para exibir o loading
 
-            // resposta.json().then(json => {
-            //     console.log("chegou aqui", json);
-            //     console.log(JSON.stringify(json));
-            //     sessionStorage.EMAIL_USUARIO = json.email;
-            //     sessionStorage.NOME_USUARIO = json.nome;
-            //     sessionStorage.ID_USUARIO = json.id;
-            //     setTimeout(function () {
-            //         window.location = "../index.html";
-            //     }, 1000); // apenas para exibir o loading
-            // });
+             resposta.json().then(json => {
+                 console.log("chegou aqui", json);
+                 console.log(JSON.stringify(json));
+                 sessionStorage.EMAIL_USUARIO = json.email;
+                 sessionStorage.NOME_USUARIO = json.nome;
+                 sessionStorage.ID_USUARIO = json.id;
+                 setTimeout(function () {
+                     window.location = "../aimTrainer.html";
+                 }, 1000); // apenas para exibir o loading
+             });
         } else {
             console.log("Houve um erro ao tentar realizar o login!");
-            // resposta.text().then(texto => {
-            //     console.error(texto);
-            // });
+             resposta.text().then(texto => {
+                 console.error(texto);
+             });
         }
 
     }).catch(function (erro) {

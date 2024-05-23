@@ -4,26 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link rel="stylesheet" type="text/css" href="game.css">
 </head>
 <body>
     
-  <button onclick="clicar()"></button>
-    <div id="mensagem">
-    </div>
-</body>
-</html>
+<div id="menu">
+    <button onclick="mudar()">JOGAR</button>
+    <button onclick="voltarMenu()">VOLTAR AO MENU</button>
+    <div id="tempoInicial">Tempo: 0s</div>
+    <div id="contador">Contador: 0</div>
+</div>
+
+
+<div id="mensagem"></div>
+
 <script>
+    function mostrarMenu() {
+        document.getElementById('menu').style.display = 'block';
+    }
+
+    function iniciarJogo() {
+        document.getElementById('menu').style.display = 'none';
+        document.getElementById('tempoInicial').style.display = 'none';
+        document.getElementById('contador').style.display = 'block';
+        // Adicione aqui a lógica para iniciar o jogo
+    }
+
+    function voltarMenu() {
+        // Adicione aqui a lógica para voltar ao menu principal
+    }
+
+    // Lógica do contador de tempo inicial
+    var tempoInicial = 0;
+    var tempoInicialInterval = setInterval(function() {
+        document.getElementById('tempoInicial').innerText = `Tempo: ${tempoInicial}s`;
+        tempoInicial++;
+
+        // Se desejar parar o contador depois de algum tempo, adicione sua lógica aqui
+    }, 1000);
+
+    // Lógica para gerar as bolinhas
     var contador = 0
     var interval = 2000
     function mudar() {
         contador++
         var y = Math.random()* 500 +  1
-    var x = Math.random()* 1000 +  1
+    var x = Math.random()* 500 +  1
     console.log(x, y)
     interval = 0
 
-    mensagem.innerHTML = `<button><div  onclick="mudar()" style ="textalign: center; display: flex; align-items: center; justify-content: center; font-size: 52px; font-weigth: 600; color: white; width: 100px; height: 100px; border-radius: 100px; background-color: red; position: absolute; top:${y}px; left: ${x}px;"><p> ${contador} </p></div></button>`
+    mensagem.innerHTML = `<div  onclick="mudar()" style ="textalign: center; display: flex; align-items: center; justify-content: center; font-size: 52px; font-weigth: 600; color: white; width: 100px; height: 100px; border-radius: 100px; background-color: red; position: absolute; top:${y}px; left: ${x}px;"><p> ${contador} </p></div>`
 
 
 
@@ -31,10 +61,10 @@
     document.addEventListener("mousemove", logKey);
     setInterval(function() {
         var y = Math.random()* 500 +  1
-    var x = Math.random()* 1000 +  1
+    var x = Math.random()* 500 +  1
     console.log(x, y)
 
-    mensagem.innerHTML = `<button><div  onclick="mudar()" style ="textalign: center; display: flex; align-items: center; justify-content: center; font-size: 52px; font-weigth: 600; color: white; width: 100px; height: 100px; border-radius: 100px; background-color: red; position: absolute; top:${y}px; left: ${x}px;"><p> ${contador} </p></div></button>`
+    mensagem.innerHTML = `<div  onclick="mudar()" style ="textalign: center; display: flex; align-items: center; justify-content: center; font-size: 52px; font-weigth: 600; color: white; width: 100px; height: 100px; border-radius: 100px; background-color: red; position: absolute; top:${y}px; left: ${x}px;"><p> ${contador} </p></div>`
 
 
     }, interval)
@@ -44,5 +74,10 @@
     var Ay = event.clientY - 50
    
     }
-  
+
+    // Chame a função para mostrar o menu quando a página carregar
+    window.onload = mostrarMenu;
 </script>
+
+</body>
+</html>

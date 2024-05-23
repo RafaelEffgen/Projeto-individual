@@ -20,20 +20,20 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body>
 
     <div class="janela">
 
         <div class="header-left dash-header">
 
-            <h1>AquaTech</h1>
+            <h1>Rainbow six siege</h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
             <div class="btn-nav">
-                <h3>Aquários</h3>
+                <h3>Pagina inicial</h3>
             </div>
 
             <div class="btn-nav-white">
@@ -57,31 +57,15 @@
         <div class="dash">
             <div id="alerta">
             </div>
+            <!-- Substituído o bloco da legenda pelo jogo -->
             <div class="area-parametros-alerta">
+                <!-- Aqui está a legenda, substitua pelo jogo -->
                 <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
+                    Rainbow Six Siege
                 </p>
                 <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
-                    </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
-                    </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
-                    </div>
+                    <!-- Adicione aqui o conteúdo relacionado ao jogo -->
+                    <iframe src="../aimTrainer.html" width="100%" height="600px" frameborder="0"scrolling="no"></iframe>
                 </div>
             </div>
 
@@ -94,27 +78,3 @@
     </div>
 
 </body>
-
-<script>
-
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
-        });
-    }
-
-</script>
-
-</html>
