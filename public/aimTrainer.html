@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aim Booster</title>
-    <link rel="stylesheet" href="../public/css/jogo.css">
+    <link rel="stylesheet" href="./css/jogo.css">
 </head>
 <body>
     <div id="game">
@@ -34,26 +34,26 @@
 </html>
 <script>
     // Seleção dos elementos do DOM
-const game = document.getElementById('game');
-const scoreBoard = document.getElementById('score-board');
-const scoreDisplay = document.getElementById('score');
-const timeDisplay = document.getElementById('time');
-const errorsDisplay = document.getElementById('errors');
-const initialModal = document.getElementById('initial-modal');
-const endModal = document.getElementById('end-modal');
-const startButton = document.getElementById('start-button');
-const restartButton = document.getElementById('restart-button');
+var game = document.getElementById('game');
+var scoreBoard = document.getElementById('score-board');
+var scoreDisplay = document.getElementById('score');
+var timeDisplay = document.getElementById('time');
+var errorsDisplay = document.getElementById('errors');
+var initialModal = document.getElementById('initial-modal');
+var endModal = document.getElementById('end-modal');
+var startButton = document.getElementById('start-button');
+var restartButton = document.getElementById('restart-button');
 
 // Variáveis de estado do jogo
-let score = 0;
-let time = 30;
-let errors = 0;
-let gameInterval;
-let timeInterval;
+var score = 0;
+var time = 30;
+var errors = 0;
+var gameInterval;
+var timeInterval;
 
 // Função para criar um novo alvo
 function createTarget() {
-    const target = document.createElement('div');
+    var target = document.createElement('div');
     target.classList.add('target');
     // Posiciona o alvo aleatoriamente dentro da área de jogo
     target.style.left = `${Math.random() * (game.clientWidth - 50)}px`;
