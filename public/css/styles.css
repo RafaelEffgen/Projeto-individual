@@ -78,7 +78,7 @@ section {
 .card-text{
     justify-content: center;
     align-items: center;
-    width: 1400px; /* Define a largura dos cards */
+    width: 200vh; /* Define a largura dos cards */
     height: auto;
     border-radius: 80px;
     background-color: #072a50; /* Cor de fundo azul */

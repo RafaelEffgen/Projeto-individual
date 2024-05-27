@@ -128,6 +128,7 @@ function endGame() {
     game.removeEventListener('click', handleMiss);
     // Exibe o modal de fim de jogo
     endModal.style.display = 'flex';
+    registrar();
 }
 
 // Adiciona eventos aos botões de início e reinício do jogo
@@ -136,5 +137,78 @@ restartButton.addEventListener('click', startGame);
 
 // Exibe o modal inicial ao carregar a página
 initialModal.style.display = 'flex';
+
+function listar() {
+    fetch("/jogo/listar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idUsuario: sessionStorage.ID_USUARIO
+        }),
+    }).then(function(resposta) {
+        resposta.json().then(json => {
+            console.log(json);
+        });
+    });
+}
+
+
+function listarMaioresScores(quantidade) {
+    fetch("/jogo/listarMaioresScores", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            quantidade: quantidade
+        }),
+    }).then(function(resposta) {
+        resposta.json().then(json => {
+            console.log(json);
+        });
+    });
+}
+
+function registrar() {
+      // Enviando o valor da nova input
+      fetch("/jogo/registrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          score: score, 
+          time: time,
+          errors: errors,
+          idUsuario: sessionStorage.ID_USUARIO
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+            cardErro.style.display = "block";
+  
+            // mensagem_erro.innerHTML =
+            //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+  
+            // setTimeout(() => {
+            //   window.location = "../login.html";
+            // }, "2000");
+
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+  
+      return false;
+    }
 
 </script>
