@@ -1,11 +1,11 @@
 var database = require("../database/config")
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function registrar(score, time, errors, idUsuario) {
+function registrar(score, tempo, erros, idUsuario) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO jogo (score, time, errors, idUsuario) VALUES ('${score}', '${time}', '${errors}', '${idUsuario}');
+        INSERT INTO jogo (score, tempo, erros, idUsuario) VALUES ('${score}', '${tempo}', '${erros}', '${idUsuario}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -13,7 +13,7 @@ function registrar(score, time, errors, idUsuario) {
 
 function listarPorUsuario(idUsuario) {
     var instrucaoSql = `
-        SELECT jogo.id, jogo.score, jogo.time, jogo.errors, usuario.nome FROM jogo inner join usuario on jogo.idUsuario = usuario.idUsuario where jogo.idUsuario='${idUsuario}';
+        SELECT jogo.id, jogo.score, jogo.tempo, jogo.erros, usuario.nome FROM jogo inner join usuario on jogo.idUsuario = usuario.idUsuario where jogo.idUsuario='${idUsuario}';
     `;
     return database.executar(instrucaoSql);
 }
