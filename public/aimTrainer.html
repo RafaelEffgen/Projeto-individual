@@ -8,207 +8,130 @@
 </head>
 <body>
     <div id="game">
-        <!-- Painel de pontuação, tempo e erros -->
         <div id="score-board">
-            Pontuação: <span id="score">0</span>
-            <br>
-            Tempo: <span id="time">30</span>s
-            <br>
+            Pontuação: <span id="score">0</span><br>
+            Tempo: <span id="time">30</span>s<br>
             Erros: <span id="errors">0</span>
         </div>
     </div>
-    <!-- Modal inicial com o botão para iniciar o jogo -->
     <div id="initial-modal" class="modal">
         <div class="modal-content">
             <button id="start-button">Iniciar Jogo</button>
         </div>
     </div>
-    <!-- Modal de fim de jogo com a mensagem de perda e botão de reinício -->
     <div id="end-modal" class="modal">
         <div class="modal-content">
-            <br>
             <button id="restart-button">Jogar novamente</button>
         </div>
     </div>
+    
 </body>
 </html>
 <script>
-    // Seleção dos elementos do DOM
-var game = document.getElementById('game');
-var scoreBoard = document.getElementById('score-board');
-var scoreDisplay = document.getElementById('score');
-var timeDisplay = document.getElementById('time');
-var errorsDisplay = document.getElementById('errors');
-var initialModal = document.getElementById('initial-modal');
-var endModal = document.getElementById('end-modal');
-var startButton = document.getElementById('start-button');
-var restartButton = document.getElementById('restart-button');
+const game = document.getElementById('game');
+const scoreDisplay = document.getElementById('score');
+const timeDisplay = document.getElementById('time');
+const errorsDisplay = document.getElementById('errors');
+const initialModal = document.getElementById('initial-modal');
+const endModal = document.getElementById('end-modal');
+const startButton = document.getElementById('start-button');
+const restartButton = document.getElementById('restart-button');
 
-// Variáveis de estado do jogo
-var score = 0;
-var time = 30;
-var errors = 0;
-var gameInterval;
-var timeInterval;
+let score, time, errors, gameInterval, timeInterval;
 
-// Função para criar um novo alvo
 function createTarget() {
-    var target = document.createElement('div');
-    target.classList.add('target');
-    // Posiciona o alvo aleatoriamente dentro da área de jogo
+    const target = document.createElement('div');
+    target.className = 'target';
     target.style.left = `${Math.random() * (game.clientWidth - 50)}px`;
     target.style.top = `${Math.random() * (game.clientHeight - 50)}px`;
-    // Adiciona evento de clique ao alvo
-    target.addEventListener('click', () => {
-        score++;
-        scoreDisplay.textContent = score;
+    target.onclick = () => {
+        scoreDisplay.textContent = ++score;
         target.remove();
-    });
+    };
     game.appendChild(target);
 }
 
-// Função para garantir que sempre haja três alvos na tela
 function showTargets() {
-    while (game.querySelectorAll('.target').length < 3) {
+    for (let i = game.querySelectorAll('.target').length; i < 3; i++) {
         createTarget();
     }
 }
 
-// Função para iniciar o jogo
-function startGame() {
-    // Reinicia variáveis de estado
-    score = 0;
-    time = 30;
-    errors = 0;
+function updateDisplay() {
     scoreDisplay.textContent = score;
     timeDisplay.textContent = time;
     errorsDisplay.textContent = errors;
+}
+
+function startGame() {
+    score = 0;
+    time = 30;
+    errors = 0;
+    updateDisplay();
     initialModal.style.display = 'none';
     endModal.style.display = 'none';
 
-    // Exibe os alvos iniciais
     showTargets();
-
-    // Define intervalos para criar novos alvos e diminuir o tempo
-    gameInterval = setInterval(() => {
-        showTargets();
-    }, 1000);
-
+    gameInterval = setInterval(showTargets, 1000);
     timeInterval = setInterval(() => {
-        time--;
-        timeDisplay.textContent = time;
-        if (time <= 0) {
-            endGame();
-        }
+        timeDisplay.textContent = --time;
+        if (time <= 0) endGame();
     }, 1000);
 
-    // Adiciona evento de clique ao jogo para detectar erros
-    game.addEventListener('click', handleMiss);
-}
-
-// Função para lidar com cliques fora dos alvos
-function handleMiss(event) {
-    if (!event.target.classList.contains('target')) {
-        errors++;
-        errorsDisplay.textContent = errors;
-        if (errors >= 3) {
-            endGame();
+    game.onclick = (e) => {
+        if (!e.target.classList.contains('target')) {
+            errorsDisplay.textContent = ++errors;
+            if (errors >= 3) endGame();
         }
-    }
+    };
 }
 
-// Função para terminar o jogo
 function endGame() {
-    // Limpa intervalos
     clearInterval(gameInterval);
     clearInterval(timeInterval);
-    // Remove todos os alvos da tela
     document.querySelectorAll('.target').forEach(target => target.remove());
-    // Remove o evento de clique do jogo
-    game.removeEventListener('click', handleMiss);
-    // Exibe o modal de fim de jogo
+    game.onclick = null;
     endModal.style.display = 'flex';
     registrar();
 }
 
-// Adiciona eventos aos botões de início e reinício do jogo
-startButton.addEventListener('click', startGame);
-restartButton.addEventListener('click', startGame);
-
-// Exibe o modal inicial ao carregar a página
+startButton.onclick = startGame;
+restartButton.onclick = startGame;
 initialModal.style.display = 'flex';
-
-function listar() {
-    fetch("/jogo/listar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            idUsuario: sessionStorage.ID_USUARIO
-        }),
-    }).then(function(resposta) {
-        resposta.json().then(json => {
-            console.log(json);
-        });
-    });
-}
-
 
 function listarMaioresScores(quantidade) {
     fetch("/jogo/listarMaioresScores", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-            quantidade: quantidade
-        }),
-    }).then(function(resposta) {
-        resposta.json().then(json => {
-            console.log(json);
-        });
-    });
+        body: JSON.stringify({ quantidade }),
+    })
+    .then(response => response.json())
+    .then(json => console.log(json));
 }
 
 function registrar() {
-      // Enviando o valor da nova input
-      fetch("/jogo/registrar", {
+    fetch("/jogo/registrar", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          score: score, 
-          time: time,
-          errors: errors,
-          idUsuario: sessionStorage.ID_USUARIO
+            score,
+            time,
+            errors,
+            idUsuario: sessionStorage.ID_USUARIO
         }),
-      })
-        .then(function (resposta) {
-          console.log("resposta: ", resposta);
-  
-          if (resposta.ok) {
-            cardErro.style.display = "block";
-  
-            // mensagem_erro.innerHTML =
-            //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-  
-            // setTimeout(() => {
-            //   window.location = "../login.html";
-            // }, "2000");
-
-          } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-          }
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        });
-  
-      return false;
-    }
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log("Score registered successfully");
+        } else {
+            console.error("Failed to register score");
+        }
+    })
+    .catch(error => console.error("Error:", error));
+}
 
 </script>

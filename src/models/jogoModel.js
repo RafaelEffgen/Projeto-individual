@@ -5,30 +5,22 @@ function registrar(score, tempo, erros, idUsuario) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO jogo (score, tempo, erros, idUsuario) VALUES ('${score}', '${tempo}', '${erros}', '${idUsuario}');
+        INSERT INTO jogo (score, tempo, erros, fkUsuario) VALUES ('${score}', '${tempo}', '${erros}', '${idUsuario}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function listarPorUsuario(idUsuario) {
-    var instrucaoSql = `
-        SELECT jogo.id, jogo.score, jogo.tempo, jogo.erros, usuario.nome FROM jogo inner join usuario on jogo.idUsuario = usuario.idUsuario where jogo.idUsuario='${idUsuario}';
-    `;
-    return database.executar(instrucaoSql);
-}
-
-function listarMaioresScores(quantidade) {
+function listarMaioresScores() {
     var instrucaoSql = `
         select usuario.nome, max(jogo.score) as score
-        from usuario inner join jogo on jogo.idUsuario = usuario.idUsuario
-        group by usuario.nome ORDER BY max(jogo.score) DESC limit ${quantidade};
+        from usuario inner join jogo on jogo.fkUsuario = usuario.idUsuario
+        group by usuario.nome ORDER BY max(jogo.score) DESC limit 5;
     `;
     return database.executar(instrucaoSql);
 }
 
 module.exports = {
     registrar,
-    listarPorUsuario,
     listarMaioresScores
 };

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Rainbow Six Siege</title>
-    <link rel="stylesheet" href="./../css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <script src="./js/sessao.js"></script>
@@ -13,7 +13,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="tela.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li><a href="cadastro.html">Cadastro</a></li>
             </ul>
@@ -55,9 +55,6 @@
 <script>
     function cadastrar() {
       aguardar();
-  
-      //Recupere o valor da nova input pelo nome do id
-      // Agora vá para o método fetch logo abaixo
       var patente = select_patente.value
       var nome = ipt_nome.value
       var cpf = ipt_cpf.value
@@ -79,15 +76,12 @@
         return false;
       }
   
-      // Enviando o valor da nova input
       fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
           patenteServer: patente,
           nomeServer: nome,
           cpfServer: cpf,

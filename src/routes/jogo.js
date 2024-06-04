@@ -8,11 +8,7 @@ router.post("/registrar", function (req, res) {
     jogoController.registrar(req, res);
 })
 
-router.post("/listar", function (req, res) {
-    jogoController.listar(req, res);
-});
-
-router.post("/listarMaioresScores", function (req, res) {
+router.get("/ranking", function (req, res) {
     jogoController.listarMaioresScores(req, res);
 });
 

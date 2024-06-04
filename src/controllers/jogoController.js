@@ -37,35 +37,27 @@ function registrar(req, res) {
     }
 }
 
-function listar(req, res) {
-    
-    var idUsuario = req.body.idUsuario;
-
-    jogoModel.listarPorUsuario(idUsuario)
-        .then(
-            function(resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function(erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao listar! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-
-}
 
 function listarMaioresScores(req, res) {
-    var quantidade = req.body.quantidade;
-
-    jogoModel.listarMaioresScores(quantidade)
+    
+    jogoModel.listarMaioresScores()
     .then(
         function(resultado) {
-            res.json(resultado);
+        
+            res.json({
+                primeiroLugar: resultado[0].nome,
+                segundoLugar: resultado[1].nome,
+                terceiroLugar: resultado[2].nome,
+                quartoLugar: resultado[3].nome,
+                quintoLugar: resultado[4].nome,
+                terceiroLugar: resultado[2].nome,
+                primeiroLugarPt: resultado[0].score,
+                segundoLugarPt: resultado[1].score,
+                terceiroLugarPt: resultado[2].score,
+                quartoLugarPt: resultado[3].score,
+                quintoLugarPt: resultado[4].score
+           
+            })
         }
     ).catch(
         function(erro) {
@@ -81,6 +73,5 @@ function listarMaioresScores(req, res) {
 
 module.exports = {
     registrar,
-    listar,
     listarMaioresScores
 }

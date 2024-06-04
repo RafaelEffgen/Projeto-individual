@@ -1,19 +1,21 @@
+/* Estilos gerais */
 body {
     font-family: 'Bebas Neue', Arial, sans-serif; /* Definindo a fonte para Bebas Neue */
     margin: 0;
     padding: 0;
     background-image: url(../assets/troféu.jpg); /* Adiciona a imagem de fundo */
     background-size: cover; /* Ajusta o tamanho da imagem de fundo */
-    background-attachment: fixed; /* Mantém a imagem de fundo fixa durante o scroll */
+    background-attachment: fixed; /* Mantém a imagem de fundo fixa durante o scroll */  
     color: #fff;
+    overflow-x: hidden;
 }
 
 header {
     background-color: #072a50;
-    padding: 20px 0;
+    padding: 20px;
     font-size: 25px;
-    font-display: flex;
     text-align: center;
+    width: 98%;
 }
 
 nav ul {
@@ -34,16 +36,15 @@ nav ul li a {
 }
 
 section {
-    padding: 20px;
-    height: 100vh;
+    padding: 0px;
 }
 
 .card {
     display: flex;
+    flex-wrap: wrap; /* Adiciona a capacidade de quebra de linha */
     justify-content: space-around; /* Alinha os cards igualmente horizontalmente */
     align-items: center; /* Faz com que os cards preencham verticalmente */
     font-size: 25px;
-    font-display: flex;
     text-align: center;
 }
 
@@ -58,13 +59,30 @@ section {
 
 .card-cad {
     width: 300px; /* Define a largura dos cards */
-    background-color: #072a50; /* Cor de fundo azul */
+    background-color: #072a50b2; /* Cor de fundo azul */
+    backdrop-filter: blur(10px);
     margin: 60px;
-    padding: 100px;
-    border-radius: 80px;
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
     transition: transform 0.3s; /* Adiciona uma transição suave no hover */
     font-size: 40px;
+    
 }
+h2 {
+    margin: 1rem;
+}
+
+    .card-cad button{
+        background-color: #00000061;
+        border: 3px solid #072a50;
+        color: white;
+        font-weight: 600;
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+        transition: 1s;
+    }
 
 .card-news {
     justify-content: center;
@@ -75,14 +93,12 @@ section {
     margin: 0px;
 }
 
-.card-text{
+.card-text {
     justify-content: center;
     align-items: center;
-    width: 200vh; /* Define a largura dos cards */
+    width: 100%; /* Define a largura dos cards */
     height: auto;
-    border-radius: 80px;
     background-color: #072a50; /* Cor de fundo azul */
-    margin: 60px;
     font-size: 20px;
     text-align: center;
 }
@@ -91,48 +107,51 @@ section {
     transform: translateY(-5px); /* Efeito de levantar os cards ao passar o mouse */
 }
 
-.map-grid {
+.mapas {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
 }
 
-.map-grid img {
+.mapas img {
     width: 100%;
     height: auto;
     transition: transform 1s;
 }
 
-.map-grid img:hover {
+.mapas img:hover {
     transform: scale(1.1);
 }
 
 footer {
     background-color: #072a50;
-    color: #fff;
+    padding: 10px;
+    font-size: 15px;
     text-align: center;
-    padding: 10px 0;
+    width: 100vw;
+    margin-top: 85px;
+    
 }
 
 /* Estilo para o card em destaque */
-.card-item.featured {
-    width: 100%; /* Ocupa toda a largura da seção */
+.card-item.destaque {
+    width: 40%; /* Ocupa toda a largura da seção */
 }
 
-.history {
+.historia {
     margin-top: 175px;
     text-align: center;
-    width: 195vh; /* Define a largura dos cards */
+    width: 100%; /* Ajuste a largura para 100% */
     background-color: #072a50; /* Cor de fundo azul */
     font-size: 25px;
 }
 
-.noticia{
+.noticia {
     max-width: 300px; /* Defina a largura máxima desejada */
     height: auto; /* Mantém a proporção da altura automaticamente */
 }
 
-.noticiaDestaque{
+.noticiaDestaque {
     max-width: 500px; /* Defina a largura máxima desejada */
     height: auto; /* Mantém a proporção da altura automaticamente */
 }
@@ -155,7 +174,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* cadastro.css */
+/* Estilos do formulário de cadastro */
 input[type="email"],
 input[type="text"],
 input[type="password"],
@@ -166,17 +185,6 @@ select {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-}
-
-button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #072a50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 button[type="submit"]:hover {

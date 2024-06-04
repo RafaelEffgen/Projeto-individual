@@ -6,21 +6,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Tempo Real</title>
+    <title>Rainbow six</title>
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
 
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao()">
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#news">Notícias</a></li>
+                <li><a href="#attackers">Agentes de Ataque</a></li>
+                <li><a href="#defenders">Agentes de Defesa</a></li>
+                <li><a href="#maps">Mapas</a></li>
+                <li><a href="#history">História</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="janela">
 
@@ -38,13 +49,7 @@
 
             <div class="btn-nav-white">
                 <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                    <h3>Líderes</h3>
                 </a>
             </div>
 
@@ -55,16 +60,11 @@
         </div>
 
         <div class="dash">
-            <div id="alerta">
-            </div>
-            <!-- Substituído o bloco da legenda pelo jogo -->
             <div class="area-parametros-alerta">
-                <!-- Aqui está a legenda, substitua pelo jogo -->
                 <p class="titulo-legenda">
                     Rainbow Six Siege
                 </p>
                 <div class="parametros-alerta">
-                    <!-- Adicione aqui o conteúdo relacionado ao jogo -->
                     <iframe src="../aimTrainer.html" width="100%" height="600px" frameborder="0"scrolling="no"></iframe>
                 </div>
             </div>
@@ -78,3 +78,6 @@
     </div>
 
 </body>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>

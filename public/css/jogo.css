@@ -9,7 +9,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Estilização do contêiner do jogo */
 #game {
     position: relative;
     width: 100vw;
@@ -17,7 +16,6 @@ body {
     overflow: hidden;
 }
 
-/* Estilização do painel de pontuação */
 #score-board {
     position: absolute;
     top: 10px;
@@ -25,7 +23,6 @@ body {
     font-size: 20px;
 }
 
-/* Estilização dos alvos */
 .target {
     position: absolute;
     width: 50px;
@@ -35,7 +32,6 @@ body {
     cursor: pointer;
 }
 
-/* Estilização dos modais */
 .modal {
     display: none;
     position: fixed;
